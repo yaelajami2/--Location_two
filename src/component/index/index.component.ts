@@ -42,7 +42,7 @@ currenL_location=new Location("0","");
 
 Edit_Item() {
   document.body.classList.add('modal-open'); // מניעת גלילה
-  this.location_s.edite_location(new Location(this.currenL_location.id,this.group_form.get("name")!.value!.toString())).subscribe(()=>{});
+  this.location_s.edite_location(new Location(this.currenL_location.id,this.group_form.get("name")!.value!.toString())).subscribe(()=>{this.Is_Show_Form=0;});
 }
 Add_Item() {
   document.body.classList.add('modal-open'); // מניעת גלילה
