@@ -1,0 +1,31 @@
+@if (message != undefined)
+{
+    @if (message!['required'];  as m)
+    {
+        <span>required field</span>
+    }
+   @else {
+    @if (message!['minlength']; as m)
+    {
+        <span>enter value length big or equal  from {{message!['minlength']['requiredLength']}}</span>
+    }
+}
+    @if (message!['pattern'];  as m)
+    {
+        <span *ngIf="message!['pattern'] as m">{{name}} invalid</span>
+    }
+    @else {@if (message!['length_id'];  as m)
+    {
+        <span>length_id invalid</span>
+    }}
+
+   @if (message!['min'];  as m)
+    {
+        <span>{{m["min"]}} min value</span>
+    }
+
+
+
+
+
+}
