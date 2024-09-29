@@ -6,7 +6,7 @@ import { Location } from '../Models/location';
 
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root' 
 })
 export class LocationService {
   apiUrl="https://location-mongo.onrender.com/api/location";
