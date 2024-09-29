@@ -30,7 +30,7 @@ export class LocationService {
       const headers = new HttpHeaders({ 
         "Content-Type": "application/json"
       });
-     
+        
   return this.http.post<any>(this.apiUrl+"/insertById", { "id": 0 ,"name":Name} 
   
    ).pipe( 
