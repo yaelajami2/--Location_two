@@ -28,10 +28,11 @@ export class LocationService {
     )};
     add_location(Name:string):Observable<void>{
       const headers = new HttpHeaders({ 
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
+        'Accept': '*/*'
       });
         
-  return this.http.post<any>(this.apiUrl+"/insertById", { "id": 0 ,"name":Name} 
+  return this.http.post<any>(this.apiUrl+"/insertById", { id: 0 ,name:Name} 
   
    ).pipe( 
     map(() => {
