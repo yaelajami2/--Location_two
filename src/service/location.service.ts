@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, catchError, map, Observable, Subject, throwError } from 'rxjs';
-import { location } from '../Models/location';
+import { Location } from '../Models/location';
 
 
 
@@ -27,14 +27,14 @@ export class LocationService {
     })
     )};
     add_location(Name:string):Observable<void>{
-      const headers = new HttpHeaders({
-        'Content-Type': 'application/json',  
-  'Accept': '*/*'
+      const headers = new HttpHeaders({ 
+        "Content-Type": "application/json",
+        'Accept': '*/*'
       });
-      let data = new location('0', 
- Name // Replace with actual name
-      );
-  return this.http.post<any>(this.apiUrl+"/insertById", data, { headers }
+     
+      
+
+  return this.http.post<any>(this.apiUrl+"/insertById", { id: 0 ,name:Name} ,{headers}
   
    ).pipe( 
     map(() => {
@@ -42,11 +42,11 @@ export class LocationService {
  })
  );};
 
-edite_location(object_location:location):Observable<void>{
+edite_location(object_location:Location):Observable<void>{
 
 
  return this.http.request<void>('PUT', this.apiUrl+"/updateById", {
-  body: JSON.stringify({ id: object_location.Id ,name:object_location.name}),
+  body: JSON.stringify({ id: object_location.id ,name:object_location.name}),
   headers: { 'Content-Type': 'application/json' }
 }).pipe( 
   map(() => {

@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { LocationService } from '../../service/location.service';
-import { location } from '../../Models/location';
+import { Location } from '../../Models/location';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {FormsModule,ReactiveFormsModule} from '@angular/forms';
 import { NgModule } from '@angular/core';
@@ -38,11 +38,11 @@ data$: Observable<Location[]> = this.location_s.data$;
      
     });
   }
-currenL_location=new location("0","");
+currenL_location=new Location("0","");
 
 Edit_Item() {
   document.body.classList.add('modal-open'); // מניעת גלילה
-  this.location_s.edite_location(new location(this.currenL_location.Id,this.group_form.get("name")!.value!.toString())).subscribe(()=>{this.Is_Show_Form=0;});
+  this.location_s.edite_location(new Location(this.currenL_location.id,this.group_form.get("name")!.value!.toString())).subscribe(()=>{});
 }
 Add_Item() {
   document.body.classList.add('modal-open'); // מניעת גלילה
