@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, catchError, map, Observable, Subject, throwError } from 'rxjs';
-import { Location } from '../Models/location';
+import { location } from '../Models/location';
 
 
 
@@ -31,11 +31,9 @@ export class LocationService {
         'Content-Type': 'application/json',  
   'Accept': '*/*'
       });
-      const data = {
-  id: '0',  // Replace with actual id
-  
-  name: 'Name' // Replace with actual name
-      };
+      let data = new location('0', 
+ Name // Replace with actual name
+      );
   return this.http.post<any>(this.apiUrl+"/insertById", data, { headers }
   
    ).pipe( 
@@ -44,11 +42,11 @@ export class LocationService {
  })
  );};
 
-edite_location(object_location:Location):Observable<void>{
+edite_location(object_location:location):Observable<void>{
 
 
  return this.http.request<void>('PUT', this.apiUrl+"/updateById", {
-  body: JSON.stringify({ id: object_location.id ,name:object_location.name}),
+  body: JSON.stringify({ id: object_location.Id ,name:object_location.name}),
   headers: { 'Content-Type': 'application/json' }
 }).pipe( 
   map(() => {
