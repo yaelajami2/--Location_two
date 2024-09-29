@@ -33,7 +33,7 @@ export class LocationService {
      
       
     let location=new Location("0",Name);
-  return this.http.post<any>(this.apiUrl+"/insertById", { Id: 0 ,name:Name} 
+  return this.http.post<any>(this.apiUrl+"/insertById", { "Id": 0 ,"name":Name} 
   
    ).pipe( 
     map(() => {
