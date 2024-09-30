@@ -24,9 +24,9 @@
 
 @for (item of (data$ | async) ; track $index) {
     <tr [id]="item.id">
-        <td class="name">{{item.name}}</td>
-        <td ><img (click)="Is_Show_Form=1;currenL_location.id=item.id;this.group_form.get('name')?.setValue(item.name);" height="50" width="50" src="../asset/writer.png"></td>
-        <td><img height="50" width="50"  (click)="openAlert(item.id)" src="../asset/delete.png"></td>
+        <td class="name"><div class="limited-text">{{item.name}}</div></td>
+        <td ><img tabindex="0" (click)="Is_Show_Form=1;currenL_location.id=item.id;this.group_form.get('name')?.setValue(item.name);" height="50" width="50" src="../asset/writer.png"></td>
+        <td><img tabindex="0"  height="50" width="50"  (click)="openAlert(item.id)" src="../asset/delete.png"></td>
 
     </tr>
 }
@@ -37,7 +37,7 @@
 
  </tbody>
   </table>
-  <div style="cursor: pointer;"  (click)="Is_Show_Form=2;this.group_form.get('name')?.setValue('');"><img height="50" width="50" src="../asset/add-list.png"></div>
+  <div style="cursor: pointer;" tabindex="0" (click)="Is_Show_Form=2;this.group_form.get('name')?.setValue('');"><img height="50" width="50" src="../asset/add-list.png"></div>
   </div><div class="col-lg-4 col-12 container_popup">
 <div [class]="{hide: Is_Show_Form==0}" class="container" id="windows_form">
 
@@ -48,9 +48,9 @@
       <input id="text" [value]="currenL_location.name" formControlName="name"  placeholder="enter city" />
       <app-show-error [message]="group_form.get('name')?.errors">
       </app-show-error>
-      <button type="submit" (click)="Add_Item()" id="Add" [disabled]="group_form.invalid"   [class]="{hide:Is_Show_Form==1}">Add</button>
-      <button type="submit" (click)="Edit_Item()" id="Edit" [disabled]="group_form.invalid"  [class]="{hide:Is_Show_Form==2}">Edit</button>
-      <button type="button" id="Reset" (click)="group_form.reset()">Reset</button>
+      <button type="submit" tabindex="0" (click)="Add_Item()" id="Add" [disabled]="group_form.invalid"   [class]="{hide:Is_Show_Form==1}">Add</button>
+      <button type="submit" tabindex="0" (click)="Edit_Item()" id="Edit" [disabled]="group_form.invalid"  [class]="{hide:Is_Show_Form==2}">Edit</button>
+      <button type="button" tabindex="0" id="Reset" (click)="group_form.reset()">Reset</button>
     
     </div>
      </form>

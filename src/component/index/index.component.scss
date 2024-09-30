@@ -4,7 +4,12 @@ $table-hover-bg: #f9f9f9;
 $table-striping-color: #f2f2f2;
 
 
-
+td.name{
+  div{
+    width: 100%;
+    word-break: break-word;
+}
+}
 .styled-table {
     width: 100%;
     border-collapse: collapse;
@@ -27,6 +32,7 @@ $table-striping-color: #f2f2f2;
 
     tbody {
         tr {
+          border-bottom: 1px solid $table-border-color;
           @media (max-width: 768px) {
             display: flex;
           }
@@ -43,7 +49,7 @@ $table-striping-color: #f2f2f2;
 
             td {
                 padding: 12px;
-                border-bottom: 1px solid $table-border-color;
+              
                 img{
                     cursor: pointer;
                 }
