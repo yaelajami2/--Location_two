@@ -4,248 +4,89 @@ $table-hover-bg: #f9f9f9;
 $table-striping-color: #f2f2f2;
 
 
-td.name{
-  div{
-    width: 100%;
-    word-break: break-word;
-}
-}
-.styled-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin: 0 auto;
 
-    thead {
-
-        background-color: $table-header-bg;
-        width: 100%;
-        justify-content: space-between;
-        @media (max-width: 768px) {
-        display: flex;}
-        th {
-            padding: 12px;
-            text-align: left;
-            font-weight: bold;
-     
-        }
-    }
-
-    tbody {
-        tr {
-          border-bottom: 1px solid $table-border-color;
-          @media (max-width: 768px) {
-            display: flex;
-          }
-          &[show="false"]{
-            display: none !important;
-          }
-            &:nth-of-type(even) {
-                background-color: $table-striping-color;
-            }
-
-            &:hover {
-                background-color: $table-hover-bg;
-            }
-
-            td {
-                padding: 12px;
-              
-                img{
-                    cursor: pointer;
-                }
-            }
-        }
-    }
-
-    // Add responsive design for smaller screens
-    @media (max-width: 768px) {
-     
-
-        tbody, td, tr {
-            display: block;
-            width: 100%;
-            box-sizing: border-box;
-        }
-
-        tr {
-            display: contents;
-        }
-
-        td {
-            text-align: right;
-            position: relative;
-            padding-left: 50%;
-            white-space: nowrap;
-
-            &::before {
-                content: attr(data-label);
-                position: absolute;
-                left: 0;
-                width: 50%;
-                padding-left: 15px;
-                font-weight: bold;
-                white-space: nowrap;
-            }
-        }
-    }
-}
-
-input {
-  caret-color: red;
-}
-
-body {
-  margin: 0;
-  width: 100vw;
-  height: 100vh;
-  background: #ecf0f3;
-  display: flex;
-  align-items: center;
-  text-align: center;
-  justify-content: center;
-  place-items: center;
-  overflow: hidden;
-  font-family: poppins;
-}
-
-.container {
-  position: relative;
-  width: 350px;
-  height: 600px;
-  border-radius: 20px;
-  padding: 40px;
-  box-sizing: border-box;
-  background: #ecf0f3;
-  margin: auto;
-}
-#windows_form{
-  .close {
-    position: absolute;
-    right: 32px;
-    top: 32px;
-    cursor: pointer;
-    width: 32px;
-    height: 32px;
-    opacity: 0.3;
-  }
-  .close:hover {
-    opacity: 1;
-  }
-  .close:before, .close:after {
-    position: absolute;
-  
-    left: 15px;
-    content: ' ';
-    height: 33px;
-    width: 2px;
-    background-color: #333;
-  }
-  .close:before {
-    transform: rotate(45deg);
-  }
-  .close:after {
-    transform: rotate(-45deg);
-  }
-  &[class*="hide"]{
-    display:none ;
-}}
-.brand-logo {
-  height: 150px;
-  width: 150px;
-  background: url("../../../public/asset/13391-NOYKMD.jpg");
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
-  margin: auto;
-  border-radius: 50%;
-  box-sizing: border-box;
-  box-shadow: 7px 7px 10px #cbced1, -7px -7px 10px white;
-}
-
-.brand-title {
-  margin-top: 10px;
-  font-weight: 900;
-  font-size: 1.8rem;
-  color: #1DA1F2;
-  letter-spacing: 1px;
-}
-
-.inputs {
-  text-align: left;
-  margin-top: 30px;
-}
-
-label, input, button {
-  display: block;
-  width: 100%;
-  padding: 0;
-  border: none;
-  outline: none;
-  box-sizing: border-box;
-}
-
-label {
-  margin-bottom: 4px;
-}
-
-label:nth-of-type(2) {
-  margin-top: 12px;
-}
-
-input::placeholder {
-  color: gray;
-}
-
-input {
-  background: #ecf0f3;
-  padding: 10px;
-  padding-left: 20px;
-  height: 50px;
-  font-size: 14px;
-  border-radius: 50px;
-  box-shadow: inset 6px 6px 6px #cbced1, inset -6px -6px 6px white;
-}
-
-button {
-  color: white;
-  margin-top: 20px;
-  background: #1DA1F2;
-  height: 40px;
-  border-radius: 20px;
-  cursor: pointer;
-  font-weight: 900;
-  box-shadow: 6px 6px 6px #cbced1, -6px -6px 6px white;
-  transition: 0.5s;
-  &:disabled{
-    opacity: 0.6;
-  }
-}
-
-button:hover {
+.mat-mdc-table {
   box-shadow: none;
+  width: 100%;
+  border-collapse: collapse;
+  margin: 0 auto;
 }
+  thead {
+    background-color: $table-header-bg;
+    width: 100%;
+    justify-content: space-between;
+    
+    @media (max-width: 768px) {
+      display: flex;
+    }
 
-a {
-  position: absolute;
-  font-size: 8px;
-  bottom: 4px;
-  right: 4px;
-  text-decoration: none;
-  color: black;
-  background: yellow;
-  border-radius: 10px;
-  padding: 2px;
-}
+ 
+  }
+   th.mat-sort-header.mat-mdc-header-cell.mdc-data-table__header-cell.cdk-header-cell {
+      padding: 12px;
+      text-align: left;
+      font-weight: bold;
+      color: black;
+    }
+  
+      tr.mat-mdc-row.mdc-data-table__row.cdk-row {
+      @media (max-width: 768px) {
+        display: flex;
+      }
 
-h1 {
-  position: absolute;
-  top: 0;
-  left: 0;
-}
-#Edit,#Add{
-   &[class*="hide"]
-   { display: none;}
-}
+      &[show="false"] {
+        display: none !important;
+      }
+
+      &:nth-of-type(even) {
+        background-color: $table-striping-color;
+      }
+
+      &:hover {
+        background-color: $table-hover-bg;
+      }
+
+      td {
+        padding: 12px;
+        border-bottom: 1px solid $table-border-color;
+
+        img {
+          cursor: pointer;
+        }
+      }
+    }
+  
+
+  @media (max-width: 768px) {
+    tbody, td, tr {
+      display: block;
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    tr {
+      display: contents;
+    }
+
+    td {
+      text-align: right;
+      position: relative;
+      padding-left: 50%;
+      white-space: nowrap;
+
+      &::before {
+        content: attr(data-label);
+        position: absolute;
+        left: 0;
+        width: 50%;
+        padding-left: 15px;
+        font-weight: bold;
+        white-space: nowrap;
+      }
+    }
+  }
+
+
 #overlay {
   position: absolute;
   top: 0;
@@ -257,7 +98,8 @@ h1 {
   background-color: #000000b3;
   z-index: 1000;
 }
-.container_popup{
+
+.container_popup {
   z-index: 999999;
   position: absolute;
   margin: auto;
@@ -265,9 +107,23 @@ h1 {
   top: 5%;
   display: block;
 }
-p{
-  margin-bottom: 10px;
+
+th.mat-mdc-sort-header-sorted {
+  color: black;
 }
 
+#Edit, #Add {
+  &[class*="hide"] {
+    display: none;
+  }
+}
+
+button:disabled {
+  opacity: 0.6;
+}
+
+input {
+  caret-color: red;
+}
 
 
