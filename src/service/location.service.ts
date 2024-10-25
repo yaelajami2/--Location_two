@@ -9,8 +9,8 @@ import { Location } from '../Models/location';
   providedIn: 'root' 
 })
 export class LocationService {
-  //apiUrl="https://location-mongo.onrender.com/api/location";
-  apiUrl="https://localhost:44316/api/location";    
+  apiUrl="https://location-mongo.onrender.com/api/location";
+  //apiUrl="https://localhost:44316/api/location";    
   list_location=new BehaviorSubject<Location[]>([]);
   data$: Observable<Location[]> = this.list_location.asObservable(); 
   constructor(private http:HttpClient) {   this.get_location();}
