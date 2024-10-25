@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, catchError, map, Observable, Subject, throwError } from 'rxjs';
+import { BehaviorSubject, map, Observable, Subject, throwError } from 'rxjs';
 import { Location } from '../Models/location';
 
 
@@ -9,13 +9,14 @@ import { Location } from '../Models/location';
   providedIn: 'root' 
 })
 export class LocationService {
-  apiUrl="https://location-mongo.onrender.com/api/location";
+  //apiUrl="https://location-mongo.onrender.com/api/location";
+  apiUrl="https://localhost:44316/api/location";    
   list_location=new BehaviorSubject<Location[]>([]);
   data$: Observable<Location[]> = this.list_location.asObservable(); 
   constructor(private http:HttpClient) {   this.get_location();}
   get_location(){
      this.http.get<Location[]>(this.apiUrl).pipe(
-    
+
      ).subscribe(data => {
       this.list_location.next(data);
     });

@@ -3,18 +3,19 @@ import { LocationService } from '../../service/location.service';
 import { Location } from '../../Models/location';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
-import { Observable } from 'rxjs';
+import { delay, Observable, of } from 'rxjs';
 import { AlertComponent } from '../alert/alert.component';
 import { MatSort, Sort, MatSortModule } from '@angular/material/sort';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { ShowErrorComponent } from "../show-error/show-error.component";
 import {LiveAnnouncer} from '@angular/cdk/a11y';
 import {MatPaginator, MatPaginatorModule} from '@angular/material/paginator';
-import { AppComponent } from '../app/app.component';
+import { SpinnerComponent } from '../spinner/spinner.component';
+
 @Component({
   selector: 'app-index',
   standalone: true,
-  imports: [ReactiveFormsModule, AlertComponent, MatTableModule, MatSortModule, ShowErrorComponent,MatPaginatorModule,MatSort],
+  imports: [ReactiveFormsModule, AlertComponent, MatTableModule, MatSortModule, ShowErrorComponent, MatPaginatorModule, MatSort, SpinnerComponent],
   templateUrl: './index.component.html',
   styleUrls: ['./index.component.scss']
 })
@@ -29,6 +30,7 @@ export class IndexComponent implements AfterViewInit {
   group_form: FormGroup; // Form group for add/edit functionality
   currenL_location = new Location("", ""); // Current location being edited
   Is_Show_Form: number = 0; // Controls the visibility of the form
+  isLoading = true;
 
   // Declare displayedColumns property
 
@@ -47,6 +49,8 @@ export class IndexComponent implements AfterViewInit {
     this.data$.subscribe((data: Location[]) => {
       console.log('Data updated:', data);
       this.dataSource.data = data; // Update data source with fetched data
+      this.isLoading = false;
+    
     });
   }
 
