@@ -26,7 +26,7 @@ export class IndexComponent implements AfterViewInit {
   selectedElementId: string = ""; // Hold the selected element ID
   @ViewChild(MatSort) sort!: MatSort;
   private _liveAnnouncer = inject(LiveAnnouncer);
-  dataSource = new MatTableDataSource<Location>(); // Data source for the table
+  dataSource = new MatTableDataSource<Location>(undefined); // Data source for the table
   group_form: FormGroup; // Form group for add/edit functionality
   currenL_location = new Location("", ""); // Current location being edited
   Is_Show_Form: number = 0; // Controls the visibility of the form
@@ -47,9 +47,11 @@ export class IndexComponent implements AfterViewInit {
   ngOnInit(): void {
     // Subscribe to data updates
     this.data$.subscribe((data: Location[]) => {
-      console.log('Data updated:', data);
-      this.dataSource.data = data; // Update data source with fetched data
-      this.isLoading = false;
+
+      this.dataSource.data = data; // Update data source with fetched data 
+  
+    if(data.length>0)
+     { this.isLoading = false;}
     
     });
   }

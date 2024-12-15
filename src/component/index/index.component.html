@@ -5,7 +5,7 @@
 <p>Table Locations</p>
 <div class="row justify-content-center">
   <div class="table-container col-12 col-lg-8">
-
+<h1>{{isLoading}}</h1>
     @if(!isLoading){
     <table class="styled-table mat-elevation-z8" mat-table [dataSource]="dataSource" matSort (matSortChange)="announceSortChange($event)">
     
