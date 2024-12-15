@@ -115,12 +115,17 @@ input {
   color: gray;
 }
 #windows_form label, #windows_form input, #windows_form button {
-  display: block;
   width: 100%;
   padding: 0;
   border: none;
   outline: none;
   box-sizing: border-box;
+}
+#windows_form label:not(.hide), #windows_form input:not(.hide), #windows_form button:not(.hide) {
+  display: block;
+}
+#windows_form label.hide, #windows_form input.hide, #windows_form button.hide {
+  display: none;
 }
 #windows_form input {
   background: #ecf0f3;

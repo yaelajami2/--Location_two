@@ -130,7 +130,13 @@ input {
     color: gray;
   }
   label, input, button {
-    display: block;
+    &:not(.hide){
+       display: block;
+    }
+    &.hide{
+      display: none;
+    }
+   
     width: 100%;
     padding: 0;
     border: none;
