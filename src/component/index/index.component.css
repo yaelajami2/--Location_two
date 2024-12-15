@@ -1,0 +1,272 @@
+.mat-mdc-table {
+  box-shadow: none;
+  width: 100%;
+  border-collapse: collapse;
+  margin: 0 auto;
+}
+
+thead {
+  background-color: #f4f4f4;
+  width: 100%;
+  justify-content: space-between;
+}
+@media (max-width: 768px) {
+  thead {
+    display: flex;
+  }
+}
+
+th.mat-sort-header.mat-mdc-header-cell.mdc-data-table__header-cell.cdk-header-cell {
+  padding: 12px;
+  text-align: left;
+  font-weight: bold;
+  color: black;
+}
+
+@media (max-width: 768px) {
+  tr.mat-mdc-row.mdc-data-table__row.cdk-row {
+    display: flex;
+  }
+}
+tr.mat-mdc-row.mdc-data-table__row.cdk-row[show=false] {
+  display: none !important;
+}
+tr.mat-mdc-row.mdc-data-table__row.cdk-row:nth-of-type(even) {
+  background-color: #f2f2f2;
+}
+tr.mat-mdc-row.mdc-data-table__row.cdk-row:hover {
+  background-color: #f9f9f9;
+}
+tr.mat-mdc-row.mdc-data-table__row.cdk-row td {
+  padding: 12px;
+  border-bottom: 1px solid #ddd;
+}
+tr.mat-mdc-row.mdc-data-table__row.cdk-row td img {
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  tbody, td, tr {
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  tr {
+    display: contents;
+  }
+  td {
+    text-align: right;
+    position: relative;
+    padding-left: 50%;
+    white-space: nowrap;
+  }
+  td::before {
+    content: attr(data-label);
+    position: absolute;
+    left: 0;
+    width: 50%;
+    padding-left: 15px;
+    font-weight: bold;
+    white-space: nowrap;
+  }
+}
+#overlay {
+  position: absolute;
+  top: 0;
+  margin: 0;
+  left: 0;
+  display: block;
+  height: 100vh;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.7019607843);
+  z-index: 1000;
+}
+
+.container_popup {
+  z-index: 999999;
+  position: absolute;
+  margin: auto;
+  padding: 0;
+  top: 5%;
+  display: block;
+}
+
+th.mat-mdc-sort-header-sorted {
+  color: black;
+}
+
+#Edit[class*=hide], #Add[class*=hide] {
+  display: none;
+}
+
+button:disabled {
+  opacity: 0.6;
+}
+
+input {
+  caret-color: red;
+}
+
+#windows_form input::-moz-placeholder {
+  color: gray;
+}
+
+#windows_form input::placeholder {
+  color: gray;
+}
+#windows_form label, #windows_form input, #windows_form button {
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: none;
+  outline: none;
+  box-sizing: border-box;
+}
+#windows_form input {
+  background: #ecf0f3;
+  padding: 10px;
+  padding-left: 20px;
+  height: 50px;
+  font-size: 14px;
+  border-radius: 50px;
+  box-shadow: inset 6px 6px 6px #cbced1, inset -6px -6px 6px white;
+}
+#windows_form.container {
+  position: relative;
+  width: 350px;
+  height: 600px;
+  border-radius: 20px;
+  padding: 40px;
+  box-sizing: border-box;
+  background: #ecf0f3;
+  margin: auto;
+}
+#windows_form .close {
+  position: absolute;
+  right: 32px;
+  top: 32px;
+  cursor: pointer;
+  width: 32px;
+  height: 32px;
+  opacity: 0.3;
+}
+#windows_form .close:hover {
+  opacity: 1;
+}
+#windows_form .close:before, #windows_form .close:after {
+  position: absolute;
+  left: 15px;
+  content: " ";
+  height: 33px;
+  width: 2px;
+  background-color: #333;
+}
+#windows_form .close:before {
+  transform: rotate(45deg);
+}
+#windows_form .close:after {
+  transform: rotate(-45deg);
+}
+#windows_form[class*=hide] {
+  display: none;
+}
+
+.brand-logo {
+  height: 150px;
+  width: 150px;
+  background: url("../../../public/asset/13391-NOYKMD.jpg");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  margin: auto;
+  border-radius: 50%;
+  box-sizing: border-box;
+  box-shadow: 7px 7px 10px #cbced1, -7px -7px 10px white;
+}
+
+.brand-title {
+  margin-top: 10px;
+  font-weight: 900;
+  font-size: 1.8rem;
+  color: #1DA1F2;
+  letter-spacing: 1px;
+}
+
+label {
+  margin-bottom: 4px;
+}
+
+label:nth-of-type(2) {
+  margin-top: 12px;
+}
+
+button {
+  color: white;
+  margin-top: 20px;
+  background: #1DA1F2;
+  height: 40px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-weight: 900;
+  box-shadow: 6px 6px 6px #cbced1, -6px -6px 6px white;
+  transition: 0.5s;
+}
+button:disabled {
+  opacity: 0.6;
+}
+
+button:hover {
+  box-shadow: none;
+}
+
+a {
+  position: absolute;
+  font-size: 8px;
+  bottom: 4px;
+  right: 4px;
+  text-decoration: none;
+  color: black;
+  background: yellow;
+  border-radius: 10px;
+  padding: 2px;
+}
+
+h1 {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+#Edit[class*=hide], #Add[class*=hide] {
+  display: none;
+}
+
+#overlay {
+  position: absolute;
+  top: 0;
+  margin: 0;
+  left: 0;
+  display: block;
+  height: 100vh;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.7019607843);
+  z-index: 1000;
+}
+
+.container_popup {
+  z-index: 999999;
+  position: absolute;
+  margin: auto;
+  padding: 0;
+  top: 5%;
+  display: block;
+}
+
+p {
+  margin-bottom: 10px;
+}
+
+.inputs {
+  text-align: left;
+  margin-top: 30px;
+}/*# sourceMappingURL=index.component.css.map */
