@@ -46,8 +46,10 @@
 
   <div class="col-lg-4 col-12 container_popup">
     <div [class]="{ hide: Is_Show_Form == 0 }" class="container" id="windows_form">
-      <span class="close" (click)="Is_Show_Form = 0"></span>
+      <div class="brand-logo"></div>
+
       <form [formGroup]="group_form" (ngSubmit)="Is_Show_Form === 1 ? Edit_Item() : Add_Item()">
+        <span class="close" (click)="Is_Show_Form=0"></span>
         <div class="inputs">
           <input id="text" formControlName="name" placeholder="Enter city" />
           <app-show-error [message]="group_form.get('name')?.errors"></app-show-error>
