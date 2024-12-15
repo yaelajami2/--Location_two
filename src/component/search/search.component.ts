@@ -21,7 +21,7 @@ search_location() {
 
 document.querySelectorAll("tbody tr").forEach((e,key)=>{
 
-  if(this.form_group.get('search')!.value!.toString().toLocaleLowerCase()!=="" &&!(e.querySelectorAll("td[class='name']")[0].textContent !=null &&e.querySelectorAll("td[class='name']")[0].textContent!.toLocaleLowerCase()!.indexOf(this.form_group.get('search')!.value!.toString().toLocaleLowerCase())>=0)){
+  if(this.form_group.get('search')!.value!.toString().toLocaleLowerCase()!=="" &&!(e.querySelectorAll("td[class*='cdk-column-name']")[0].textContent !=null &&e.querySelectorAll("td[class*='cdk-column-name']")[0].textContent!.toLocaleLowerCase()!.indexOf(this.form_group.get('search')!.value!.toString().toLocaleLowerCase())>=0)){
    e.setAttribute("show","false")
   }
   else{

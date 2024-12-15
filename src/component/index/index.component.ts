@@ -43,7 +43,11 @@ export class IndexComponent implements AfterViewInit {
 
   // Observable for data
   data$: Observable<Location[]> = this.location_s.data$;
-
+  form_group= this.fb.group(
+    {
+      'search':this.fb.control("")
+    }
+  ) 
   ngOnInit(): void {
     // Subscribe to data updates
     this.data$.subscribe((data: Location[]) => {
@@ -112,4 +116,37 @@ export class IndexComponent implements AfterViewInit {
       this.DeleteItem(response.id); // Execute delete if confirmed
     }
   }
+  search_location(paginator: MatPaginator) {
+    const searchTerm = this.form_group.get('search')?.value?.toLowerCase();
+
+    if (!searchTerm) {
+      // אם שדה החיפוש ריק, מאפסים את הפילטר
+      this.dataSource.filter = '';
+      paginator.firstPage(); // חזרה לעמוד הראשון
+      return;
+    }
+
+    // חיפוש גלובלי במקור הנתונים
+    const filteredData = this.dataSource.data.filter((item) =>
+      item.name.toLowerCase().includes(searchTerm)
+    );
+
+    if (filteredData.length > 0) {
+      // מציאת המיקום של התוצאה הראשונה
+      const index = this.dataSource.data.findIndex(
+        (item) => item.name.toLowerCase() === filteredData[0].name.toLowerCase()
+      );
+
+      // חישוב העמוד שבו נמצאת התוצאה
+      const pageIndex = Math.floor(index / paginator.pageSize);
+
+      // עדכון הפילטר והדפדוף לעמוד הנכון
+      this.dataSource.filter = searchTerm;
+      paginator.pageIndex = pageIndex;
+    } else {
+      // אם אין תוצאות, ניתן להציג הודעה או פעולה אחרת
+      console.log('No results found');
+    }
+  }
+
 }

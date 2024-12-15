@@ -1,3 +1,14 @@
+<div>
+  <form [formGroup]="form_group">
+    <input
+      type="search"
+      formControlName="search"
+      placeholder="Search location"
+      (input)="search_location(paginator)"
+    />
+
+  </form>
+</div>
 @if (Is_Show_Form != 0 || isAlertVisible) {
   <div id="overlay"></div>
 }
