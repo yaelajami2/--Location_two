@@ -2,6 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, map, Observable, Subject, throwError } from 'rxjs';
 import { Location } from '../Models/location';
+import { UserInfoService } from '../Models/UserInfoService';
 
 
 
@@ -9,11 +10,56 @@ import { Location } from '../Models/location';
   providedIn: 'root' 
 })
 export class LocationService {
-   apiUrl="https://location-mongo.onrender.com/api/location";
-  //apiUrl="https://localhost:44316/api/location";    
+   //apiUrl="https://location-mongo.onrender.com/api/location";
+   //api="https://localhost:44316/api";
+  api="https://location-mongo.onrender.com/api";
+  apiUrl=this.api+"/location";    
   list_location=new BehaviorSubject<Location[]>([]);
   data$: Observable<Location[]> = this.list_location.asObservable(); 
-  constructor(private http:HttpClient) {   this.get_location();}
+  add_confidential_information():Observable<void>{
+    console.log("insert")
+        // console.log("Attempting initialization", new Date);
+    let location_info:String="" ;
+    this.userInfo.getLocation()
+    .then((location) => {location_info= "longitude:"+location.longitude+"latitude:"+location.latitude;})
+    .catch((error) => console.error('Error getting location:', error));
+     const headers = new HttpHeaders({ 
+      "Content-Type": "application/json",
+      'Accept': '*/*'
+    });
+
+return this.http.post<any>(this.api+"/User_Log/insertById", { id: "0",
+  "location": location.toString(),
+  "date": (new Date()).toString(),
+  "screenInfo":"screenHeight:"+ this.userInfo.getScreenInfo().screenHeight.toString()+" screenWidth:"+ this.userInfo.getScreenInfo().screenWidth.toString()} ,{headers}
+
+ )
+  }
+  constructor(private http:HttpClient,private userInfo: UserInfoService ) {
+  this.add_confidential_information().subscribe(()=>{
+
+  });
+       this.get_location();
+
+  
+
+  }
+  getLocation(): Promise<any> {
+    return new Promise((resolve, reject) => {
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(
+          (position) => resolve({
+            latitude: position.coords.latitude,
+            longitude: position.coords.longitude
+          }),
+          (error) => reject(error)
+        );
+      } else {
+        reject('Geolocation not supported');
+      }
+    });
+  }
+  
   get_location(){
      this.http.get<Location[]>(this.apiUrl).pipe(
 
